@@ -113,13 +113,13 @@ function PrintCell(cell, x, y)
     var back;
     if (cell >= 0)
     {
-        text = '．';
+        text = '　';
         color = '#e0e0e0';
         back = '#202020';
     }
     else if (cell == -1)
     {
-        text = '，';
+        text = '　';
         color = '#202020';
         back = '#e0e0e0';
     }
