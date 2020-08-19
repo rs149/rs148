@@ -32,7 +32,7 @@ function InitTile(width, height)
         var row = [];
         for (x = 0; x < width; x++)
         {
-            var value = Math.floor(Math.random() * 6);
+            var value = Math.floor(Math.random() * 10);
             row.push(value);
         }
         tile.push(row);
@@ -109,24 +109,48 @@ function OpenTile(tile, x, y)
 function PrintCell(cell, x, y)
 {
     var text;
+    var color;
+    var back;
     if (cell >= 0)
     {
         text = '．';
+        color = '#e0e0e0';
+        back = '#202020';
     }
     else if (cell == -1)
     {
         text = '，';
+        color = '#202020';
+        back = '#e0e0e0';
     }
     else if (cell == -11)
     {
         text = 'Ｘ';
+        color = '#e0e0e0';
+        back = '#ff0000';
     }
     else
     {
-        text = String.fromCharCode((-cell).toString().charCodeAt(0) + 0xFEE0);
+        text = String.fromCharCode((-cell - 1).toString().charCodeAt(0) + 0xFEE0);
+
+        if (cell == -2)
+        {
+            color = "#0000e0";
+            back = "#e0e0e0";
+        }
+        else if (cell == -3)
+        {
+            color = "#00e000";
+            back = "#e0e0e0";
+        }
+        else
+        {
+            color = "#e08000";
+            back = "#e0e0e0";
+        }
     }
 
-    text = '<button onClick="OpenTile(tile, ' + x.toString() + ', ' + y.toString() + ')">' + text + '</button>';
+    text = '<button style="color:' + color + ';background-color:' + back + '" onClick="OpenTile(tile, ' + x.toString() + ', ' + y.toString() + ')">' + text + '</button>';
     return text;
 }
 
